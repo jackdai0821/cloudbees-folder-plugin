@@ -1002,6 +1002,10 @@ public abstract class AbstractFolder<I extends TopLevelItem> extends AbstractIte
     public Collection<I> getItems() {
         List<I> viewableItems = new ArrayList<I>();
         for (I item : items.values()) {
+            if (item.getClass().toString().contains("MatrixProject")){
+                viewableItems.add(item);
+                continue;
+            }
             if (item.hasPermission(Item.READ)) {
                 viewableItems.add(item);
             }
